@@ -42,7 +42,11 @@
 #define DNNL_API DNNL_HELPER_DLL_IMPORT
 #endif
 #else
+#if defined _WIN32 || defined __CYGWIN__
 #define DNNL_API
+#else
+#define DNNL_API __attribute__((weak))
+#endif
 #endif
 
 #if defined(__GNUC__)
